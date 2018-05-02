@@ -18,7 +18,7 @@ book.html: $(CHAPTERS) $(CSS) $(HTML_TEMPLATE) $(BIB) $(CITATION)
 		   $(CHAPTERS) -o $@
 
 book.pdf: $(CHAPTERS) $(TEX_HEADER) $(BIB) $(CITATION)
-	pandoc --toc -H $(TEX_HEADER) --latex-engine=pdflatex --chapters \
+	pandoc --toc -H $(TEX_HEADER) --latex-engine=pdflatex --top-level-division=chapter \
 		   --no-highlight --bibliography $(BIB) --csl $(CITATION) \
 		   $(CHAPTERS) -o $@
 
@@ -26,13 +26,13 @@ ff: book.html
 	firefox book.html
 
 release: book.html book.pdf
-	mkdir -p ../littleosbook.github.com/images
-	cp images/*.png ../littleosbook.github.com/images/
-	mkdir -p ../littleosbook.github.com/files
-	cp files/* ../littleosbook.github.com/files/
-	cp book.pdf ../littleosbook.github.com/
-	cp book.html ../littleosbook.github.com/index.html
-	cp book.css ../littleosbook.github.com/
+	mkdir -p ../littleosbook/images
+	cp images/*.png ../littleosbook/images/
+	mkdir -p ../littleosbook/files
+	cp files/* ../littleosbook/files/
+	cp book.pdf ../littleosbook/
+	cp book.html ../littleosbook/index.html
+	cp book.css ../littleosbook/
 
 clean:
 	rm -f book.pdf book.html
