@@ -238,7 +238,7 @@ Place the file `grub.cfg` in the folder `iso/boot/grub/`. The contents of the
     iso
     |-- boot
       |-- grub
-      | |-- grub-cfg
+      | |-- grub.cfg
       |-- kernel.elf
 ~~~
 
