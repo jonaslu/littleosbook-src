@@ -10,7 +10,7 @@ CHAPTERS = title.txt introduction.md environment_and_booting.md \
 BIB = bibliography.bib
 CITATION = citation_style.csl
 
-all: book.html
+all: book.html book.pdf
 
 book.html: $(CHAPTERS) $(CSS) $(HTML_TEMPLATE) $(BIB) $(CITATION)
 	pandoc -s -S --toc -c $(CSS) --template $(HTML_TEMPLATE) \
