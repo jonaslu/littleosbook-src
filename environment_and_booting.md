@@ -310,6 +310,11 @@ The flag `-f` tells Bochs to use the given configuration file and the flag `-q`
 tells Bochs to skip the interactive start menu. You should now see Bochs
 starting and displaying a console with some information from GRUB on it.
 
+NB: On Debian and Ubuntu, the bochs package is compiled with the debugger. Because
+of this, you will have to go into the Bochs prompt, which will be in the terminal
+that initiated Bochs. Then type `c`, as a command. Then, Bochs will load your
+OS.
+
 After quitting Bochs, display the log produced by Boch:
 
 ~~~
