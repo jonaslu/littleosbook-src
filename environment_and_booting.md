@@ -19,7 +19,7 @@ Once Ubuntu is installed, either physical or virtual, the following packages
 should be installed using `apt-get`:
 
 ~~~ {.bash}
-    sudo apt-get install build-essential nasm genisoimage bochs bochs-sdl
+    sudo apt-get install build-essential nasm xorriso grub-pc bochs bochs-sdl
 ~~~
 
 ### Programming Languages
@@ -206,77 +206,51 @@ linked with the following command:
 
 The final executable will be called `kernel.elf`.
 
-### Obtaining GRUB
-The GRUB version we will use is GRUB Legacy, since the OS ISO image can then be
-generated on systems using both GRUB Legacy and GRUB 2. More specifically, the
-GRUB Legacy `stage2_eltorito` bootloader will be used. This file can be built
-from GRUB 0.97 by downloading the source from
-<ftp://alpha.gnu.org/gnu/grub/grub-0.97.tar.gz>.  However, the `configure`
-script doesn't work well with Ubuntu [@ubuntu-grub], so the binary file can be
-downloaded from <http://littleosbook.github.com/files/stage2_eltorito>. Copy
-the file `stage2_eltorito` to the folder that already contains `loader.s` and
-`link.ld`.
-
 ### Building an ISO Image
 The executable must be placed on a media that can be loaded by a virtual or
 physical machine. In this book we will use ISO [@wiki:iso] image files as the
 media, but one can also use floppy images, depending on what the virtual or
 physical machine supports.
 
-We will create the kernel ISO image with the program `genisoimage`. A folder
+We will create the kernel ISO image with the program `grub-mkrescue`. A folder
 must first be created that contains the files that will be on the ISO image.
 The following commands create the folder and copy the files to their correct
 places:
 
 ~~~ {.bash}
     mkdir -p iso/boot/grub              # create the folder structure
-    cp stage2_eltorito iso/boot/grub/   # copy the bootloader
     cp kernel.elf iso/boot/             # copy the kernel
 ~~~
 
-A configuration file `menu.lst` for GRUB must be created. This file tells GRUB
-where the kernel is located and configures some options:
+A configuration file `grub.cfg` for GRUB must be created. This file tells GRUB
+where the kernel is located:
 
 ~~~
-    default=0
-    timeout=0
-
-    title os
-    kernel /boot/kernel.elf
+    menuentry "os" {
+        multiboot /boot/kernel.elf
+    }
 ~~~
 
-Place the file `menu.lst` in the folder `iso/boot/grub/`. The contents of the
+Place the file `grub.cfg` in the folder `iso/boot/grub/`. The contents of the
 `iso` folder should now look like the following figure:
 
 ~~~
     iso
     |-- boot
       |-- grub
-      | |-- menu.lst
-      | |-- stage2_eltorito
+      | |-- grub.cfg
       |-- kernel.elf
 ~~~
 
 The ISO image can then be generated with the following command:
 
 ~~~
-    genisoimage -R                              \
-                -b boot/grub/stage2_eltorito    \
-                -no-emul-boot                   \
-                -boot-load-size 4               \
-                -A os                           \
-                -input-charset utf8             \
-                -quiet                          \
-                -boot-info-table                \
-                -o os.iso                       \
-                iso
+    grub-mkrescue -o os.iso iso
 ~~~
 
-For more information about the flags used in the command, see the manual for
-`genisoimage`.
+The `-o` flag specifies what to output the iso file to.
 
-The ISO image `os.iso` now contains the kernel executable, the GRUB
-bootloader and the configuration file.
+The ISO image `os.iso` now contains the kernel executable and the configuration file.
 
 ### Running Bochs
 Now we can run the OS in the Bochs emulator using the `os.iso` ISO image.
