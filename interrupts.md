@@ -61,7 +61,7 @@ segment selector as the kernel) the following two bytes would be used:
     0x0008BEEF
 ~~~
 
-If the IDT is represented as an `unsigned integer idt[512]` then to register
+If the IDT is represented as an `unsigned int idt[512]` then to register
 the above example as an handler for interrupt 0 (divide-by-zero), the following
 code would be used:
 
@@ -284,7 +284,7 @@ be done as follows:
      *
      *  @param num The number of the interrupt
      */
-    void pic_acknowledge(unsigned integer interrupt)
+    void pic_acknowledge(unsigned int interrupt)
     {
         if (interrupt < PIC1_START_INTERRUPT || interrupt > PIC2_END_INTERRUPT) {
           return;
