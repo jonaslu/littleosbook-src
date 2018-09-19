@@ -392,9 +392,10 @@ Therefore we use the configuration value `0x03 = 00000011` (RTS = 1 and DTS =
 ### Writing Data to the Serial Port
 
 Writing data to the serial port is done via the data I/O port. However, before
-writing, the transmit FIFO queue has to be empty (all previous writes must have
-finished). The transmit FIFO queue is empty if bit 5 of the line status I/O
-port is equal to one.
+writing, the transmit FIFO queue has to be empty. The line status I/O register
+uses bit 6 to denote that all previous writes have been completed, but for us
+it is sufficient to simply know that the transmit FIFO queue is empty. This is
+the case if bit 5 of the line status I/O port is equal to one.
 
 Reading the contents of an I/O port is done via the `in` assembly code instruction.
 There is no way to use the `in` assembly code instruction from C, therefore it has
@@ -448,7 +449,7 @@ Writing to a serial port means spinning as long as the transmit FIFO queue
 isn't empty, and then writing the data to the data I/O port.
 
 ### Configuring Bochs
-To save the output from the first serial serial port the Bochs configuration
+To save the output from the first serial port the Bochs configuration
 file `bochsrc.txt` must be updated.
 The `com1` configuration instructs Bochs how to handle first
 serial port:
