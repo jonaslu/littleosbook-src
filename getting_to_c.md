@@ -3,7 +3,7 @@ This chapter will show you how to use C instead of assembly code as the programm
 language for the OS. Assembly is very good for interacting with the CPU and
 enables maximum control over every aspect of the code.  However, at least for
 the authors, C is a much more convenient language to use. Therefore, we would
-like to use C as much as possible and use assembly code only where it make sense.
+like to use C as much as possible and use assembly code only where it makes sense.
 
 ## Setting Up a Stack
 One prerequisite for using C is a stack, since all non-trivial C programs use
