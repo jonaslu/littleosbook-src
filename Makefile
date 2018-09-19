@@ -28,8 +28,6 @@ ff: book.html
 release: book.html book.pdf
 	mkdir -p ../littleosbook/images
 	cp images/*.png ../littleosbook/images/
-	mkdir -p ../littleosbook/files
-	cp files/* ../littleosbook/files/
 	cp book.pdf ../littleosbook/
 	cp book.html ../littleosbook/index.html
 	cp book.css ../littleosbook/
