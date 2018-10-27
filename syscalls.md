@@ -9,7 +9,7 @@ design requires some thought.
 It is up to us, the kernel developers, to design the system calls that
 application developers can use. We can draw inspiration from the POSIX
 standards or, if they seem like too much work, just look at the ones for Linux,
-and pick and choose. See the section ["Further Reading"](#further-reading-7) at
+and pick and choose. See the section ["Further Reading"](#further-reading-10) at
 the end of the chapter for references.
 
 ## Implementing System Calls
