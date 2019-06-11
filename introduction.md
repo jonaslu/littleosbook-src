@@ -106,7 +106,7 @@ request. We'll happily incorporate anything that makes this book better.
 
 ## Issues and where to get help
 If you run into problems while reading the book, please check the issues on
-Github for help: <https://github.com/littleosbook/littleosbook/issues>.
+Github for help: <https://github.com/OrdoFlammae/littleosbook-src/issues>.
 
 ## License
 
