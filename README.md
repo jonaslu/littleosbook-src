@@ -1,4 +1,4 @@
-# littleosbook
+# littleosbook-src
 
 This is the source code for the book "The little book about OS development".
 The source for the book is written in
@@ -16,7 +16,7 @@ If you want to create the PDF version, you also need `pdflatex` installed.
 
 ## Errors
 If you find any error (there are probably plenty :)), please open a new
-["issue"](https://github.com/OrdoFlammae/littleosbook/issues).
+["issue"](https://github.com/OrdoFlammae/littleosbook-src/issues).
 
 ## Contributing
 If you want to contribute new material or fix some errors, please open fork the
