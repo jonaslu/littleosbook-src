@@ -85,7 +85,7 @@ helpful members, and James Malloy for his eminent kernel development tutorial
 insightful questions and interesting discussions.
 
 Most of the CSS formatting of the book is based on the work by Scott Chacon for
-the book Pro Git, <http://progit.org/>.
+the book Pro Git, <https://git-scm.com/book/en/v2>.
 
 ## Contributors
 We are very grateful for the patches that people send us. The following users
