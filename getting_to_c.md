@@ -186,8 +186,7 @@ figure:
     |-- iso
     |   |-- boot
     |     |-- grub
-    |       |-- menu.lst
-    |       |-- stage2_eltorito
+    |       |-- grub.cfg
     |-- kmain.c
     |-- loader.s
     |-- Makefile
