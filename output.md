@@ -61,7 +61,7 @@ write the character A with a dark grey foreground (2) and green background (8)
 at place (0,0), the following assembly code instruction is used:
 
 ~~~ {.nasm}
-    mov [0x000B8000], 0x2841
+    mov word [0x000B8000], 0x2841
 ~~~
 
 The second cell then corresponds to row zero, column one and its address is
